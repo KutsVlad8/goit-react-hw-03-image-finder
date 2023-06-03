@@ -26,7 +26,7 @@ export class Searchbar extends Component {
       Notiflix.Notify.failure('Поле ввода пустое');
       return;
     }
-    Notiflix.Notify.success(`вот что мы нашли по запросу ${this.state.query}`);
+    // Notiflix.Notify.success(`вот что мы нашли по запросу ${this.state.query}`);
     this.props.onSubmit(trimQuery);
     this.setState({ query: '' });
   };

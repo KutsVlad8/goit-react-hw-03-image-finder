@@ -1,8 +1,5 @@
 import styled from '@emotion/styled';
 
-/*
- * Стили компонента Searchbar
- */
 export const Header = styled.header`
   top: 0;
   left: 0;
@@ -22,13 +19,6 @@ export const Header = styled.header`
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 `;
 
-// .Searchbar {
-// }
-
-/*
- * Стили компонента SearchForm
- */
-
 export const SearchForm = styled.form`
   display: flex;
   align-items: center;
@@ -38,8 +28,6 @@ export const SearchForm = styled.form`
   border-radius: 3px;
   overflow: hidden;
 `;
-// .SearchForm {
-// }
 
 export const SearchFormButton = styled.button`
   display: inline-block;
@@ -54,15 +42,12 @@ export const SearchFormButton = styled.button`
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   outline: none;
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
 `;
-
-// .SearchForm-button {
-
-// }
-
-// .SearchForm-button:hover {
-//   opacity: 1;
-// }
 
 export const SearchFormButtonLabel = styled.span`
   position: absolute;
@@ -76,9 +61,6 @@ export const SearchFormButtonLabel = styled.span`
   border: 0;
 `;
 
-// .SearchForm-button-label {
-// }
-
 export const SearchFormInput = styled.input`
   display: inline-block;
   width: 100%;
@@ -88,13 +70,9 @@ export const SearchFormInput = styled.input`
   outline: none;
   padding-left: 4px;
   padding-right: 4px;
+
+  &::placeholder {
+    font: inherit;
+    font-size: 18px;
+  }
 `;
-
-// .SearchForm-input {
-
-// }
-
-// .SearchForm-input::placeholder {
-//   font: inherit;
-//   font-size: 18px;
-// }
