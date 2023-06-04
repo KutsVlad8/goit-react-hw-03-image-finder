@@ -6,8 +6,10 @@ import {
   SearchFormButtonLabel,
   SearchFormInput,
 } from './Searchbar.styled';
+
+import { ImSearch } from 'react-icons/im';
+
 import Notiflix from 'notiflix';
-// import { toast } from 'react-toastify';
 
 export class Searchbar extends Component {
   state = {
@@ -36,6 +38,7 @@ export class Searchbar extends Component {
       <Header>
         <SearchForm onSubmit={this.handleSubmit}>
           <SearchFormButton type="submit">
+            <ImSearch size={24} />
             <SearchFormButtonLabel>Search</SearchFormButtonLabel>
           </SearchFormButton>
 
