@@ -28,7 +28,7 @@ export class App extends Component {
     const array = await getImages(this.state.query, this.state.page);
 
     if (prevQuery !== nextQuery) {
-      this.setState({ loading: true, page: 1 });
+      this.setState({ loading: true, images: [], page: 1 });
 
       try {
         this.setState({ images: array.hits, totalHits: array.totalHits });
