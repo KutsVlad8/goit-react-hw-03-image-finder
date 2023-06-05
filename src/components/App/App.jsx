@@ -25,12 +25,11 @@ export class App extends Component {
     const prevPage = prevState.page;
     const nextState = this.state;
 
-    const array = await getImages(this.state.query, this.state.page);
-
     if (prevQuery !== nextQuery) {
-      this.setState({ loading: true, images: [], page: 1 });
+      this.setState({ loading: true });
 
       try {
+        const array = await getImages(this.state.query, this.state.page);
         this.setState({ images: array.hits, totalHits: array.totalHits });
       } catch (error) {
         console.dir(error);
@@ -44,8 +43,12 @@ export class App extends Component {
       this.setState({ loading: true });
 
       try {
+        const array = await getImages(this.state.query, this.state.page);
         this.setState(prevState => ({
-          images: [...prevState.images, ...array.hits],
+          images:
+            this.state.page === 1
+              ? array.hits
+              : [...prevState.images, ...array.hits],
         }));
       } catch (error) {
         this.setState({ error: error });
@@ -56,7 +59,16 @@ export class App extends Component {
   }
 
   handleSubmitForm = query => {
-    this.setState({ query });
+    this.setState({
+      query,
+      images: [],
+      page: 1,
+      totalHits: null,
+      error: null,
+      loading: false,
+      showModal: false,
+      modalImg: null,
+    });
   };
 
   handleLoadMore = () => {
