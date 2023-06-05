@@ -41,12 +41,16 @@ export class App extends Component {
     }
 
     if (prevPage !== nextState.page) {
+      this.setState({ loading: true });
+
       try {
         this.setState(prevState => ({
           images: [...prevState.images, ...array.hits],
         }));
       } catch (error) {
         this.setState({ error: error });
+      } finally {
+        this.setState({ loading: false });
       }
     }
   }
@@ -79,8 +83,6 @@ export class App extends Component {
           </TextContainer>
         )}
 
-        {loading && <Loader />}
-
         {error && (
           <TextContainer>
             <Text>{error}</Text>
@@ -88,6 +90,8 @@ export class App extends Component {
         )}
 
         {images && <ImageGallery images={images} onClick={this.openModal} />}
+
+        {loading && <Loader />}
 
         {totalHits / images.length > page && (
           <LoadMore onClick={this.handleLoadMore} />
