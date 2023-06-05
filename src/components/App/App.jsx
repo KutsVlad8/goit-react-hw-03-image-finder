@@ -1,10 +1,8 @@
 import { Component } from 'react';
-// import {} from './App.styled';
-
+import { TextContainer, Text } from './App.styled';
 import { getImages } from '../servise/api';
 import { Searchbar } from '../Searchbar/Searchbar';
 import { ImageGallery } from '../ImageGallery/ImageGallery';
-import { TextContainer, Text } from '../ImageGallery/ImageGallery.styled';
 import { Modal } from '../Modal/Modal';
 import { LoadMore } from '../Button/Button';
 import { Loader } from '../Loader/Loader';
@@ -13,10 +11,10 @@ export class App extends Component {
   state = {
     query: '',
     images: [],
-    error: null,
-    loading: false,
     page: 1,
     totalHits: null,
+    error: null,
+    loading: false,
     showModal: false,
     modalImg: null,
   };
@@ -57,7 +55,7 @@ export class App extends Component {
     this.setState({ query });
   };
 
-  handlerLoadMore = () => {
+  handleLoadMore = () => {
     this.setState(prevState => ({ page: prevState.page + 1 }));
   };
 
@@ -92,7 +90,7 @@ export class App extends Component {
         {images && <ImageGallery images={images} onClick={this.openModal} />}
 
         {totalHits / images.length > page && (
-          <LoadMore onClick={this.handlerLoadMore} />
+          <LoadMore onClick={this.handleLoadMore} />
         )}
 
         {this.state.showModal && (
